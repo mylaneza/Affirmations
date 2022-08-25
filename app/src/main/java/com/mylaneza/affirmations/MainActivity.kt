@@ -2,6 +2,7 @@ package com.mylaneza.affirmations
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mylaneza.affirmations.adapter.ItemAdapter
 import com.mylaneza.affirmations.data.Datasource
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         val myDataset = Datasource().loadAffirmations()
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.adapter = ItemAdapter(this,myDataset)
+        val gridLayoutManager : GridLayoutManager  = recyclerView.layoutManager as GridLayoutManager
+        gridLayoutManager.spanCount = 2
         //Optional for fixed sized data
         recyclerView.setHasFixedSize(true)
     }
